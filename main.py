@@ -6,27 +6,22 @@ pygame.init()
 #screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 #pygame.display.set_caption("Ashes Of Humanity")
 
-class Game:
-    def __init__(self):
-        self.screen_size = (800,600)
-        self.screen = pygame.display.set_mode(self.screen_size)
-        pygame.display.set_caption("Ashes Of Humanity")#Nom du jeu
-        self.gamemap = GameMap(self.screen_size)
-        
-        self.running = True
-    
-    def run(self):
-        #boucle du jeu
-        while self.running :
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-            self.screen.fill((0, 0, 0))
-            self.gamemap.render(self.screen, (1084, 800))#centre de la map
-            pygame.display.flip()#rafraichir la map
-        #Pour que la fenêtre ne se ferme pas
-        pygame.quit()
 
-if __name__ == "__main__":
-    game = Game()
-    game.run()
+screen_size = (800,600)
+screen = pygame.display.set_mode(screen_size)
+pygame.display.set_caption("Ashes Of Humanity")#Nom du jeu
+gamemap = GameMap(screen_size)
+clock = pygame.time.Clock()
+running = True
+
+#boucle du jeu
+while running :
+    clock.tick(60) #nb fps
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        screen.fill((0, 0, 0))#ecran sous la map (noir)
+        gamemap.render(screen, (1084, 800))#centre de la map
+        pygame.display.flip()#rafraichir la map
+        #Pour que la fenêtre ne se ferme pas
+pygame.quit()
