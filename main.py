@@ -1,7 +1,7 @@
 import pygame
 import sys # Ajouté pour quitter proprement
-from games.map.importmap import GameMap
-from games.entity.main_character.player import Player # Ton import
+from Games.map.importmap import GameMap
+from Games.entity.main_character.player import Player # Ton import
 
 # Initialisation de Pygame
 pygame.init()
